@@ -115,10 +115,9 @@ CommandServoProcessor.Instance.Initialize(cmdManager, unitManager);
 
 - Demos in the path "MGS.Packages/CommandServo/Demo/" provide reference to you.
 
-## Preview
+## Source
 
-![Command Servo System](./Attachment/images/CommandServoSystem.PNG)
-
+- https://github.com/mogoson/MGS.CommandServo.
 ------
 
 Copyright © 2021 Mogoson.	mogoson@outlook.com
