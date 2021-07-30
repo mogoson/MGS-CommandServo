@@ -126,12 +126,11 @@
             Constructor.
             </summary>
         </member>
-        <member name="M:MGS.CommandServo.CommandServoProcessor.Tick(System.Object,System.Timers.ElapsedEventArgs)">
+        <member name="M:MGS.CommandServo.CommandServoProcessor.Update(System.DateTime)">
             <summary>
-            Timer tick.
+            On update event.
             </summary>
-            <param name="sender">Event sender.</param>
-            <param name="e">Event args.</param>
+            <param name="signalTime">Signal time.</param>
         </member>
         <member name="M:MGS.CommandServo.CommandServoProcessor.OnUnitRespond(MGS.CommandServo.Command)">
             <summary>
