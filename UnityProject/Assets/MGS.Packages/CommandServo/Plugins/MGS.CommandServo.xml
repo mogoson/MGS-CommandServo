@@ -126,11 +126,10 @@
             Constructor.
             </summary>
         </member>
-        <member name="M:MGS.CommandServo.CommandServoProcessor.Update(System.DateTime)">
+        <member name="M:MGS.CommandServo.CommandServoProcessor.Update">
             <summary>
             On update event.
             </summary>
-            <param name="signalTime">Signal time.</param>
         </member>
         <member name="M:MGS.CommandServo.CommandServoProcessor.OnUnitRespond(MGS.CommandServo.Command)">
             <summary>
