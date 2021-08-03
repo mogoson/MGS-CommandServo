@@ -1,6 +1,6 @@
 [TOC]
 
-# MGS-CommandServo
+# MGS.CommandServo
 
 ## Summary
 - Command servo system for Unity project.
