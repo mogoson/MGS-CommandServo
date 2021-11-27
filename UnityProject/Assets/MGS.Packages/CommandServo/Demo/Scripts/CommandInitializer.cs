@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  SPCommandIO.cs
+ *  File         :  CommandInitializer.cs
  *  Description  :  Null.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -14,24 +14,25 @@ using UnityEngine;
 
 namespace MGS.CommandServo.Demo
 {
-    public class SPCommandIO : MonoCommandIO, ICommandIO
+    public class CommandInitializer : MonoBehaviour
     {
         #region Field and Property
+        public MonoCommandIO commandIO;
+        public Transform commandUnits;
         #endregion
 
         #region Private Method
-        #endregion
-
-        #region Public Method
-        public override byte[] ReadBuffer()
+        private void Start()
         {
-            Debug.LogError("NotImplementedException");
-            return null;
-        }
+            var register = new CommandUnitRegister();
+            var units = commandUnits.GetComponentsInChildren<MonoCommandUnit>(true);
+            foreach (var unit in units)
+            {
+                register.RegisterUnit(unit);
+            }
 
-        public override void WriteBuffer(byte[] buffer)
-        {
-            Debug.LogError("NotImplementedException");
+            var adapter = new CommandAdapter(commandIO, new CommandParser());
+            MonoCommandProcessor.Instance.Initialize(adapter, register);
         }
         #endregion
     }

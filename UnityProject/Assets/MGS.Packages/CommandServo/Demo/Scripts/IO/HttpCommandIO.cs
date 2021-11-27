@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  SPCommandIO.cs
+ *  File         :  HttpCommandIO.cs
  *  Description  :  Null.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
@@ -14,7 +14,7 @@ using UnityEngine;
 
 namespace MGS.CommandServo.Demo
 {
-    public class SPCommandIO : MonoCommandIO, ICommandIO
+    public class HttpCommandIO : MonoCommandIO, ICommandIO
     {
         #region Field and Property
         #endregion

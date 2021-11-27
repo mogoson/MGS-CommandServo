@@ -21,26 +21,6 @@
 - Execute the Command and respond the result after complete.
 - Parse the respond result to buffer and write to command IO.
 
-## Implemented
-
-```C#
-public interface ICommandIO{}
-
-public interface ICommandParser{}
-
-public interface ICommandUnit{}
-
-public struct Command{}
-
-public abstract class CommandUnit : ICommandUnit{}
-
-public class CommandManager : ICommandManager{}
-
-public class CommandUnitManager : ICommandUnitManager{}
-
-public sealed class CommandServoProcessor : SingleTimer<CommandServoProcessor>, ICommandServoProcessor{}
-```
-
 ## Usage
 
 - Implement interfaces base your business logic.
@@ -87,27 +67,30 @@ public class MyCommandUnit : CommandUnit
 }
 ```
 
-- Construct command manager.
+- Construct command adapter.
 
 ```C#
-var cmdIO = new CommandIO();
-var cmdParser = new CommandParser();
-var cmdManager = new CommandManager(cmdIO, cmdParser);
+var io = new CommandIO();
+var parser = new CommandParser();
+var adapter = new CommandAdapter(io, parser);
 ```
 
-- Construct command unit manager and Register units.
+- Construct command unit register and Register units.
 
 ```c#
-var unitManager = new CommandUnitManager();
+var register = new CommandUnitRegister();
 var unit_0 = new MyCommandUnit();
-unitManager.RegisterUnit(unit_0);
+register.RegisterUnit(unit_0);
 ```
 
-- Initialize command servo processor.
+- Initialize command processor.
 
 ```C#
-//Processor cruise starts after initialized.
-CommandServoProcessor.Instance.Initialize(cmdManager, unitManager);
+//Processor base on Coroutine.
+MonoCommandProcessor.Instance.Initialize(adapter, register);
+
+//Processor base on Thread.
+CommandProcessor.Instance.Initialize(adapter, register);
 ```
 
 

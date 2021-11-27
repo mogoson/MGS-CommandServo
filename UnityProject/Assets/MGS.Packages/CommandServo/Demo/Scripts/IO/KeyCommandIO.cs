@@ -1,17 +1,16 @@
 /*************************************************************************
- *  Copyright © 2020 Mogoson. All rights reserved.
+ *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  KeyCommandIO.cs
  *  Description  :  Null.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/12/2020
+ *  Date         :  4/12/2021
  *  Description  :  Initial development version.
  *************************************************************************/
 
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGS.CommandServo.Demo
@@ -80,9 +79,9 @@ namespace MGS.CommandServo.Demo
             {
                 isDirty = false;
 
-                var tempBuffer = new List<byte>(buffer).ToArray();
+                var readBuffer = buffer.Clone() as byte[];
                 Array.Clear(buffer, 0, buffer.Length);
-                return tempBuffer;
+                return readBuffer;
             }
             return null;
         }
@@ -90,12 +89,9 @@ namespace MGS.CommandServo.Demo
         public override void WriteBuffer(byte[] buffer)
         {
             var bufferStr = string.Empty;
-            if (buffer != null)
+            foreach (var buf in buffer)
             {
-                foreach (var code in buffer)
-                {
-                    bufferStr += code + " ";
-                }
+                bufferStr += buf + " ";
             }
             Debug.LogFormat("Output buffer: {0}", bufferStr);
         }

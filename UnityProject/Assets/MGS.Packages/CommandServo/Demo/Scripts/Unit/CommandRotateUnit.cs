@@ -1,12 +1,12 @@
 /*************************************************************************
- *  Copyright © 2020 Mogoson. All rights reserved.
+ *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  CommandRotateUnit.cs
  *  Description  :  Null.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/12/2020
+ *  Date         :  4/12/2021
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -31,8 +31,8 @@ namespace MGS.CommandServo.Demo
         }
         #endregion
 
-        #region Protected Method
-        protected override void ExecuteCommand(params object[] args)
+        #region Public Method
+        public override void Execute(params object[] args)
         {
             var speed = float.Parse(args[0].ToString());
 
