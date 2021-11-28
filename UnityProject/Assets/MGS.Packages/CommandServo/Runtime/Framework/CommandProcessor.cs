@@ -41,11 +41,6 @@ namespace MGS.CommandServo
         /// Interval of processor run time (ms).
         /// </summary>
         public int Interval { set; get; }
-
-        /// <summary>
-        /// Processor is disposed?
-        /// </summary>
-        private bool isDisposed = false;
         #endregion
 
         #region Private Method
@@ -64,7 +59,7 @@ namespace MGS.CommandServo
         /// </summary>
         private void ThreadCruise()
         {
-            while (!isDisposed)
+            while (true)
             {
                 if (IsActive)
                 {
