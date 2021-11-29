@@ -24,10 +24,8 @@ namespace MGS.CommandServo.Demo
             transform.Translate(Vector3.up * displacement);
             InvokeOnRespondEvent(new object[] { (byte)0 });
         }
-        #endregion
 
-        #region Public Method
-        public override void Execute(params object[] args)
+        protected override void ExecuteCmd(params object[] args)
         {
             var displacement = float.Parse(args[0].ToString());
             transform.Translate(Vector3.up * displacement);

@@ -14,21 +14,10 @@ using UnityEngine;
 
 namespace MGS.CommandServo
 {
-    /// <summary>
-    /// Mono Command IO.
-    /// </summary>
     public abstract class MonoCommandIO : MonoBehaviour, ICommandIO
     {
-        /// <summary>
-        /// Read buffer from IO.
-        /// </summary>
-        /// <returns>Buffer from IO.</returns>
         public abstract byte[] ReadBuffer();
 
-        /// <summary>
-        /// Write buffer to IO.
-        /// </summary>
-        /// <param name="buffer">Buffer to IO.</param>
         public abstract void WriteBuffer(byte[] buffer);
     }
 }

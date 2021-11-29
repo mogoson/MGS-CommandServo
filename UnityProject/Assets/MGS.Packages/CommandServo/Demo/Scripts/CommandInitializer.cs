@@ -32,7 +32,7 @@ namespace MGS.CommandServo.Demo
             }
 
             var adapter = new CommandAdapter(commandIO, new CommandParser());
-            MonoCommandProcessor.Instance.Initialize(adapter, register);
+            CommandProcessor.Instance.Initialize(adapter, register);
         }
         #endregion
     }

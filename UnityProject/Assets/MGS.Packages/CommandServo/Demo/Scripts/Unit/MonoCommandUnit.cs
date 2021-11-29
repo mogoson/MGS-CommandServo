@@ -11,45 +11,53 @@
  *************************************************************************/
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MGS.CommandServo
 {
-    /// <summary>
-    /// Mono Command unit.
-    /// </summary>
     public abstract class MonoCommandUnit : MonoBehaviour, ICommandUnit
     {
-        /// <summary>
-        /// Command unit code.
-        /// </summary>
         [SerializeField]
         protected string code;
 
-        /// <summary>
-        /// Command unit code.
-        /// </summary>
         public string Code
         {
             set { code = value; }
             get { return code; }
         }
 
-        /// <summary>
-        /// On command unit respond event.
-        /// </summary>
         public event Action<string, object[]> OnRespondEvent;
 
-        /// <summary>
-        /// Execute command.
-        /// </summary>
-        /// <param name="args">Command args.</param>
-        public abstract void Execute(params object[] args);
+        protected Queue<Action> actions = new Queue<Action>();
 
-        /// <summary>
-        /// Invoke OnRespondEvent.
-        /// </summary>
-        /// <param name="args"></param>
+        protected virtual void Update()
+        {
+            lock (actions)
+            {
+                while (actions.Count > 0)
+                {
+                    actions.Dequeue().Invoke();
+                }
+            }
+        }
+
+        protected void BeginInvoke(Action action)
+        {
+            lock (actions)
+            {
+                actions.Enqueue(action);
+            }
+        }
+
+        public void Execute(params object[] args)
+        {
+            //Execute in main thread.
+            BeginInvoke(() => ExecuteCmd(args));
+        }
+
+        protected abstract void ExecuteCmd(params object[] args);
+
         protected void InvokeOnRespondEvent(object[] args)
         {
             if (OnRespondEvent == null)

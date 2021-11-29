@@ -31,10 +31,8 @@ namespace MGS.CommandServo.Demo
         {
             meshRenderer = GetComponent<MeshRenderer>();
         }
-        #endregion
 
-        #region Public Method
-        public override void Execute(params object[] args)
+        protected override void ExecuteCmd(params object[] args)
         {
             var index = int.Parse(args[0].ToString()) - 1;
             if (index < 0 || index >= colors.Length)
