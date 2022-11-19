@@ -98,10 +98,6 @@ CommandProcessor.Instance.Initialize(adapter, register);
 
 - Demos in the path "MGS.Packages/CommandServo/Demo/" provide reference to you.
 
-## Preview
-
-![Command Servo System](./Attachment/images/CommandServoSystem.PNG)
-
 ------
 
 Copyright © 2021 Mogoson.	mogoson@outlook.com
