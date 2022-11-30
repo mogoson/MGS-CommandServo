@@ -15,6 +15,10 @@
 ## Platform
 - Windows
 
+## Version
+
+- 1.1.0
+
 ## Demand
 - Listener the command IO and read command buffer.
 - Parse the command buffer to Command.
